@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <variable
+            name="userDataModel"
+            type="com.example.mvvm_sample2.myDao.UserData" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:id="@+id/parent_layout"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:background="@android:color/darker_gray"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/fisrt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="First Name"
+                android:text="@{userDataModel.first_name}"
+                 />
+
+            <TextView
+                android:id="@+id/last_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/fisrt_name"
+                android:layout_marginLeft="10dp"
+                android:hint="Last Name"
+                android:text="@{userDataModel.last_name}"
+                 />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone No"
+                android:layout_toRightOf="@+id/last_name"
+                android:layout_marginLeft="10dp"
+                android:text="@{userDataModel.phone}"
+                 />
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+</layout>
