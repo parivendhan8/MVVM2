@@ -72,8 +72,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
                     final LinearLayout view = binding.parentLayout;
 
-
-
                     view.animate()
                             .setDuration(600)
                             .alpha(0.7f)

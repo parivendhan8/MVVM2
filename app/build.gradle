@@ -49,6 +49,8 @@ dependencies {
 //    final checkoutVersion = "2.4.4"
 //    implementation "com.adyen.checkout:ui:${checkoutVersion}"
 
+    compile 'com.github.lightfire:Android-Gradient-Text-Color:b0047755f7'
+
 
 
 }

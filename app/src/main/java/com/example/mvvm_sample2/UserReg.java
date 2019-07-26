@@ -2,11 +2,16 @@ package com.example.mvvm_sample2;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.database.Cursor;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,9 +24,12 @@ import java.util.List;
 
 public class UserReg extends AppCompatActivity {
 
+    private static final String TAG = "UserReg";
+
     UserRegisterationBinding binding;
     UserModel userModel;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +40,14 @@ public class UserReg extends AppCompatActivity {
         userModel = ViewModelProviders.of(UserReg.this).get(UserModel.class);
         binding.setLifecycleOwner(this);
         binding.setUserModel(userModel);
+
+        Cursor query = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null);
+
+        while (query.moveToNext())
+        {
+            String string = query.getString(query.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+            Log.d(TAG, "onCreate: " + string );
+        }
 
         userModel.getAllList().observe(UserReg.this, new Observer<List<UserData>>() {
             @Override
